@@ -56,12 +56,12 @@ if exist([envfil '.env'], 'file')
 end;
 %%
 if Beam.RunType == 'R' % generates a ray file to plot
-	write_env( envfil, 'BELLHOP', 'Munk Profile', freq, SSP, Bdry, Pos, Beam, cInt, RMax, [] );
+	write_env( envfil, 'BELLHOP', envfil, freq, SSP, Bdry, Pos, Beam, cInt, RMax, [] );
 	% write_env( envfil, model, TitleEnv, freq, SSP, Bdry, Pos, Beam, cInt, RMax, varargin );
 	bellhop( envfil );  plotray( envfil );
 else
 	Beam.RunType = 'A'; % generates an complex amplitude-delay(sec) file for usage
-	write_env( envfil, 'BELLHOP', 'Munk Profile', freq, SSP, Bdry, Pos, Beam, cInt, RMax, [] );
+	write_env( envfil, 'BELLHOP', envfil, freq, SSP, Bdry, Pos, Beam, cInt, RMax, [] );
 	bellhop( envfil );
 	[ Arr, ~ ] = read_arrivals_asc( [envfil '.arr'] );
 end;
