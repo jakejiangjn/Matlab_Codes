@@ -26,7 +26,7 @@ cInt = struct('Low',1400,'High',1600);  RMax = 0;  varargin = [];
 if exist([envfil '.env'], 'file')
     delete([envfil '.env']);
 end;
-if Beam.RunType == 'A';
+if Beam.RunType == 'R';
 %%
     write_env( envfil, 'BELLHOP', 'Munk Profile', freq, SSP, Bdry, Pos, Beam, cInt, RMax, [] );
 %   write_env( envfil, model, TitleEnv, freq, SSP, Bdry, Pos, Beam, cInt, RMax, varargin );
