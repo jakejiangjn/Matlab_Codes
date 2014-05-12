@@ -26,11 +26,11 @@ cInt = struct('Low',1400,'High',1600);  RMax = 0;  varargin = [];
 if exist([envfil '.env'], 'file')
     delete([envfil '.env']);
 end;
-write_env( envfil, 'KRAKEN', 'Munk Profile', freq, SSP, Bdry, Pos, Beam, cInt, RMax, varargin );
+write_env( envfil, 'KRAKEN', envfil, freq, SSP, Bdry, Pos, Beam, cInt, RMax, [] );
 %write_env( envfil, model, TitleEnv, freq, SSP, Bdry, Pos, Beam, cInt, RMax, varargin );
 %%
 kraken( envfil ); % krakenc( envfil );
-[PlotTitle,PlotType,~,alten,~,p] = read_shd( [envfil '.shd'] );
+[PlotTitle,PlotType,~,atten,~,p] = read_shd( [envfil '.shd'] );
 % Struct 'Pos' includes 3 structs 'Pos.theta', 'Pos.s'('Pos.s.depth' array of NSD*1) and
 % 'Pos.r'('Pos.r.depth' array of NRD*1;'Pos.r.range' array of NR*1)
 % size(p) = length(SD)*length(RD)*length(R)
