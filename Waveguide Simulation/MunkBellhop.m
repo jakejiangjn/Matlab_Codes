@@ -26,12 +26,15 @@ cInt = struct('Low',1400,'High',1600);  RMax = 0;  varargin = [];
 if exist([envfil '.env'], 'file')
     delete([envfil '.env']);
 end;
-write_env( envfil, 'BELLHOP', 'Munk Profile', freq, SSP, Bdry, Pos, Beam, cInt, RMax, varargin );
-%write_env( envfil, model, TitleEnv, freq, SSP, Bdry, Pos, Beam, cInt, RMax, varargin );
+if Beam.RunType == 'A';
 %%
-bellhop( envfil );  plotray( envfil );
+    write_env( envfil, 'BELLHOP', 'Munk Profile', freq, SSP, Bdry, Pos, Beam, cInt, RMax, [] );
+%   write_env( envfil, model, TitleEnv, freq, SSP, Bdry, Pos, Beam, cInt, RMax, varargin );
+    bellhop( envfil );  plotray( envfil );
 %%
-Beam.RunType = 'A';
-write_env( envfil, 'BELLHOP', 'Munk Profile', freq, SSP, Bdry, Pos, Beam, cInt, RMax, varargin );
-bellhop( envfil );
-[ Arr, ~ ] = read_arrivals_asc( [envfil '.arr'] );
+else
+    Beam.RunType = 'A';
+    write_env( envfil, 'BELLHOP', 'Munk Profile', freq, SSP, Bdry, Pos, Beam, cInt, RMax, [] );
+    bellhop( envfil );
+    [ Arr, ~ ] = read_arrivals_asc( [envfil '.arr'] );
+end;
