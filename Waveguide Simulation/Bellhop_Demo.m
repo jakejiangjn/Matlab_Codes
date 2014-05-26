@@ -34,7 +34,6 @@ SSP.N = 2500; % NMesh of each Layer -> integer array( size(SSP.N)=1,SSP.NMedia )
 SSP.sigma = zeros(1,1); % RMS roughness at the interface
 SSP.depth = [0 200]; % Starting Depth of each Media Layer and the last element is the depth of Bottom( size(SSP.N)=1,SSP.NMedia+1 )
 SSP.raw = Layer;
-clear Layer L;
 Beam.RunType = 'R'; % RunType
 Beam.Nrays = 20; % just same as Beam.Nbeams for safety
 Beam.Nbeams = 20; % the numbers of Rays/Beams to trace (use 0 to have the program calculate a value automatically)
