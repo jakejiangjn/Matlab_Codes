@@ -1,5 +1,4 @@
-% A Kraken DEMO for a range dependent environment
-clear all;	close all;	clc;
+fclose('all');   clear all;	close all;	clc;
 %% Generate field.flp
 titleflp = 'field'; % to generate field.flp
 SD = 10; % Source Elements' Depth in m
@@ -7,7 +6,7 @@ RD = linspace(0.0,100,101); % Each Source Receive Aarry Elements' Depth in m
 R = linspace(0.0,2,201); % Source Receive Aarries' Location in km
 Pos.theta = []; Pos.s.depth = SD;
 Pos.r.depth = RD; Pos.r.range = R;
-rProf = [0.0 1.0  2.0];RMax = [1.0 2.0 4.0];
+rProf = [0.0 1.0 2.0];
 NProf = length(rProf);
 write_flp( 'RC', NProf, rProf, Pos );
 %% Generate env file
@@ -44,6 +43,7 @@ SSP.sigma = zeros(1,2); % RMS roughness at the interface
 SSP.depth = [0 100 120]; % Starting Depth of each Media Layer and the last element is the depth of Bottom
 SSP.raw = Layer;
 Beam = struct();
+RMax = 0.0;
 cInt.Low = 1400; cInt.High = 2000;
 clear Layer L;
 if exist([envfil '.env'], 'file')
@@ -51,7 +51,7 @@ if exist([envfil '.env'], 'file')
 end;
 for n = 1:NProf
 	SSP.raw(1).alphaR = SSP.raw(1).alphaR + 50;
-	write_env( envfil, 'KRAKENC', ['Range Dependent #' int2str(n)], freq, SSP, Bdry, Pos, Beam, cInt, RMax(n), 0 );
+	write_env( envfil, 'KRAKENC', ['Range Dependent #' int2str(n)], freq, SSP, Bdry, Pos, Beam, cInt, RMax, 'a' );
 end;
 % syntax: write_env( envfil, model, TitleEnv, freq, SSP, Bdry, Pos, Beam, cInt, RMax, varargin );
 %% Run Kraken
