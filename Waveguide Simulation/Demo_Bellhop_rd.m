@@ -59,7 +59,7 @@ for n = 2:NProf
     c(:,n) = c(:,n-1) + 50;
 end;
 writessp( [envfil, '.ssp'], rProf, c );
-writebty( [envfil, '.bty'], 'L', [rProf;100,100,100]' );
+writebty( [envfil, '.bty'], 'L', [rProf;50,75,100]' );
 % syntax: write_env( envfil, model, TitleEnv, freq, SSP, Bdry, Pos, Beam, cInt, RMax, varargin );
 %%
 bellhop( envfil );
