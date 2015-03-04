@@ -10,7 +10,7 @@ rProf = [0.0 1.0 2.0];
 NProf = length(rProf);
 write_flp( 'RC', NProf, rProf, Pos );
 %% Generate env file
-envfil = 'BellhopDemo_rd'; % to generate KrakenDemo.env
+envfil = 'BellhopDemo_rd'; % to generate BellhopDemo_rd.env
 freq = 800; % frequency
 % Boundary Codition Setting
 Bdry.Top.Opt = 'QVW'; % Options of Top Boundary
