@@ -14,7 +14,7 @@ carrier_I = cos( 2*pi*fc*temp );
 carrier_Q = sin( 2*pi*fc*temp );
 x = carrier_I*seq;  L_x = numel(x);
 x = reshape( x, 1, L_x );
-temp = exp( 1j*unwrap(rand(1,L_x)-0.5)*pi );
+temp = exp( 1j*unwrap(rand(1,L_x)-0.5)*pi ); % Phase Disturbance; a -2*pi~2*pi disturbance will highly cause severe Phase Ambiguity
 x = real( 10^(SNR/20)*x.*temp + [1,1j]*randn(2,L_x)/sqrt(2) );
 temp = (0:L_x-1)/L_x;
 figure(1);plot( temp*T, x );title('Received Signals');xlabel('Time axis(s)');ylabel('Amplitude');
