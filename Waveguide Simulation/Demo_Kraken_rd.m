@@ -73,3 +73,7 @@ colorbar;
 %%
 figure(2);
 plotshd( [envfil '.shd'] ); colorbar;
+%%
+for n = 1:NProf
+    Modes(n) = read_modes( [envfil '.mod'] );
+end;
