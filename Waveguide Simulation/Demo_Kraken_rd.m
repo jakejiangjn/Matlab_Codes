@@ -74,6 +74,5 @@ colorbar;
 figure(2);
 plotshd( [envfil '.shd'] ); colorbar;
 %%
-for n = 1:NProf
-    Modes(n) = read_modes( [envfil '.mod'] );
-end;
+Modes = read_modes_rd( [envfil '.mod'], NProf );
+% Modes is a struct with 3 fields, each field has its own phi k etc.
